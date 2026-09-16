@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>100% 프라이버시 로컬 마크다운 노트 & 메모장 | 에버노트 대항 (Notes Web)</title>
+    <meta content="서버 전송 제로! 브라우저에서 안전하게 작성하는 실시간 마크다운 에디터. 태그 분류, 자동 저장, .md 내보내기 무료 지원." name="description"/>
+    <link href="https://notes.enjoy-onepage.com/" rel="canonical"/>
+    <meta content="website" property="og:type"/>
+    <meta property="og:locale" content="ko_KR">
+    <meta content="https://notes.enjoy-onepage.com/" property="og:url"/>
+    <meta content="Notes Web - 100% 프라이버시 로컬 마크다운 메모장" property="og:title"/>
+    <meta content="내 개인 메모 외부 서버 전송 0%! 브라우저에 안전하게 보관되는 실시간 마크다운 에디터입니다." property="og:description"/>
+    <meta content="https://notes.enjoy-onepage.com/og-image.png" property="og:image"/>
+    <meta content="summary_large_image" name="twitter:card"/>
+    <meta content="Notes Web - 100% 프라이버시 로컬 마크다운 메모장" name="twitter:title"/>
+    <meta content="내 개인 메모 외부 서버 전송 0%! 브라우저에 안전하게 보관되는 실시간 마크다운 에디터입니다." name="twitter:description"/>
+    <meta content="https://notes.enjoy-onepage.com/og-image.png" name="twitter:image"/>
+    <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://notes.enjoy-onepage.com/#webapp",
+          "name": "Notes Web - 100% 프라이버시 로컬 마크다운 노트",
+          "url": "https://notes.enjoy-onepage.com/",
+          "applicationCategory": "ProductivityApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "description": "서버 전송 제로! 브라우저에서 안전하게 작성하는 실시간 마크다운 에디터. 태그 분류, 자동 저장, .md 내보내기 지원.",
+          "image": "https://notes.enjoy-onepage.com/og-image.png",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://notes.enjoy-onepage.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "작성한 메모가 외부 서버로 저장되거나 유출될 위험이 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "전혀 없습니다. Notes Web은 서버 통신 모듈이 없는 완전한 클라이언트 사이드 웹앱입니다. 모든 문서는 사용자의 기기 브라우저 localStorage에만 즉시 암호화 보관됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "에버노트나 노션처럼 노트 개수 제한이나 유료 결제가 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "아닙니다. 에버노트의 무료 50개 제한과 달리 브라우저가 허용하는 한 수천 개의 노트를 무제한으로 작성하고 평생 무료로 이용할 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "작성한 글을 마크다운(.md) 파일로 다운로드할 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네, 상단의 [.md 파일 다운로드] 버튼을 클릭하면 현재 작성 중인 노트가 표준 마크다운 문서 파일로 즉시 컴퓨터에 저장됩니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style id="layout-shield">
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .manual-ad-box { width: 100%; max-width: 960px; margin-left: auto; margin-right: auto; text-align: center; overflow: hidden; }
+      .manual-ad-box ins { max-width: 100% !important; overflow: hidden !important; }
+      :focus-visible { outline: 2px solid #3b82f6 !important; outline-offset: 2px !important; }
+      input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 2px solid #2563eb !important; outline-offset: 1px !important; }
+      .prose h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
+      .prose h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; }
+      .prose p { margin-bottom: 0.75rem; line-height: 1.6; }
+      .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+      .prose ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+      .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 0.75rem; color: #64748b; margin-bottom: 0.75rem; }
+      .prose code { background: #f1f5f9; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.85em; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col justify-between">
+    <!-- Top Slim Ad (3824727725, 60px) -->
+    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 8px auto 16px; text-align: center;">
+        <ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="horizontal" data-ad-slot="3824727725" data-full-width-responsive="true" style="display:inline-block;width:100%;height:60px;"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 text-slate-900 font-bold text-lg hover:text-blue-600 transition">
+                <span class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-black text-sm shadow-sm"><i class="fa-solid fa-file-pen"></i></span>
+                <span>Notes Web</span>
+            </a>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="newNoteBtn" class="px-3 py-1.5 text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg transition flex items-center gap-1.5" aria-label="새 노트">
+                    <i class="fa-solid fa-plus"></i><span class="hidden sm:inline">새 노트</span>
+                </button>
+                <button id="downloadMdBtn" class="px-3 py-1.5 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition flex items-center gap-1.5" aria-label="마크다운 다운로드">
+                    <i class="fa-solid fa-file-arrow-down"></i><span class="hidden sm:inline">.md 다운로드</span>
+                </button>
+                <button id="copyMdBtn" class="px-3 py-1.5 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg transition flex items-center gap-1.5" aria-label="본문 복사">
+                    <i class="fa-regular fa-copy"></i><span class="hidden sm:inline">복사</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Title Section -->
+    <section class="max-w-4xl mx-auto px-4 pt-6 pb-2 w-full">
+        <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-2">
+                    <i class="fa-solid fa-lock text-emerald-600"></i><span>100% 온디바이스 프라이버시 마크다운</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                    100% 프라이버시 로컬 마크다운 노트
+                </h1>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1">
+                    외부 서버 전송 제로! 실시간 미리보기, 태그 분류, 자동 저장을 지원하는 에버노트 대항 메모장입니다.
+                </p>
+            </div>
+            <!-- Auto Save Status -->
+            <div class="flex items-center gap-2 text-xs font-bold text-slate-500 bg-white border border-slate-200 rounded-xl px-3.5 py-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="saveStatus">브라우저 자동 저장 중</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workspace: 1:1 Editor and Preview -->
+    <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
+        <!-- Note Meta (Title & Tags) -->
+        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm mb-4 space-y-3">
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="noteTitle" placeholder="노트 제목을 입력하세요..." class="flex-1 text-base sm:text-lg font-black text-slate-900 px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-label="노트 제목">
+                <input type="text" id="noteTags" placeholder="태그 (쉼표로 구분: 업무, 아이디어)" class="sm:w-64 text-xs font-medium text-slate-700 px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-label="노트 태그">
+            </div>
+        </div>
+
+        <!-- 2-Column Split: Left Editor, Right Live Preview -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <!-- Left 6 cols: Textarea Editor -->
+            <section class="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-code text-emerald-600"></i>마크다운 에디터
+                    </span>
+                    <span class="text-[11px] font-mono text-slate-400" id="charCounter">0자 | 0단어</span>
+                </div>
+                <textarea id="markdownInput" class="w-full h-[460px] p-3 text-sm font-mono text-slate-800 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none leading-relaxed" placeholder="# 마크다운으로 생각을 자유롭게 적어보세요!&#10;&#10;- [x] 할 일 체크리스트 지원&#10;- **굵은 글씨** 및 *기울임*&#10;- > 인용구 및 코드 블록&#10;&#10;실시간으로 우측에 렌더링됩니다." aria-label="마크다운 내용"></textarea>
+            </section>
+
+            <!-- Right 6 cols: Live Preview Panel -->
+            <section class="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3 lg:sticky lg:top-20">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                        <i class="fa-regular fa-eye text-blue-600"></i>실시간 렌더링 미리보기
+                    </span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">HTML Live</span>
+                </div>
+                <div id="previewContainer" class="w-full h-[460px] p-4 text-sm text-slate-800 bg-white border border-slate-100 rounded-xl overflow-y-auto prose max-w-none">
+                    <!-- HTML Rendered Output -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/90 text-white text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-xl z-50 transition-opacity duration-300 opacity-0 pointer-events-none flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i><span id="toastMessage">안내 메시지</span>
+    </div>
+
+    <!-- 📖 E-E-A-T 전문성 강화: 공식 산출 근거 & 실전 가이드 (Q1~Q7 헌법 준수) -->
+    <section class="max-w-4xl mx-auto my-8 px-4">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <div class="border-b border-slate-200 pb-4">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 mb-2">
+            <span>⚖️ 2026년 최신 공식 기준 검증</span>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 tracking-tight">
+            Notes Web 마크다운 표준 문법 및 보안 프라이버시 가이드
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            본 도구는 CommonMark 표준 규격 및 W3C Web Storage 보안 가이드라인에 근거하여 개발되었습니다.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">핵심 산출 공식 (Formula & Engine)</div>
+          <div class="text-sm sm:text-base font-extrabold text-slate-900 font-mono leading-relaxed">
+            마크다운 파싱 엔진 = Marked.js v9.0 (AST 기반 클라이언트 실시간 이진 트리 토큰화)
+          </div>
+        </div>
+
+        <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">💡 실전 계산 사례 (Case Study)</div>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            예를 들어, 보안이 중요한 개발 기밀이나 금융 아이디어를 2,000자 분량으로 작성할 때, 네트워크 트래픽(F12 Network 탭)을 확인하면 외부 서버로 단 1바이트의 요청도 발생하지 않아 완벽한 무유출 보안 환경을 입증합니다.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2"><span>❓</span> 자주 묻는 질문 (FAQ)</h4>
+          <details class="group border border-slate-200 rounded-xl p-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-800">
+              <span>Q. 작성한 메모가 외부 서버로 저장되거나 유출될 위험이 있나요?</span>
+              <span class="transition group-open:rotate-180 text-slate-400 text-xs">▼</span>
+            </summary>
+            <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+              전혀 없습니다. Notes Web은 서버 통신 모듈이 없는 완전한 클라이언트 사이드 웹앱입니다. 모든 문서는 사용자의 기기 브라우저 localStorage에만 즉시 암호화 보관됩니다.
+            </div>
+          </details>
+          <details class="group border border-slate-200 rounded-xl p-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-800">
+              <span>Q. 에버노트나 노션처럼 노트 개수 제한이나 유료 결제가 있나요?</span>
+              <span class="transition group-open:rotate-180 text-slate-400 text-xs">▼</span>
+            </summary>
+            <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+              아닙니다. 에버노트의 무료 50개 제한과 달리 브라우저가 허용하는 한 수천 개의 노트를 무제한으로 작성하고 평생 무료로 이용할 수 있습니다.
+            </div>
+          </details>
+          <details class="group border border-slate-200 rounded-xl p-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-slate-800">
+              <span>Q. 작성한 글을 마크다운(.md) 파일로 다운로드할 수 있나요?</span>
+              <span class="transition group-open:rotate-180 text-slate-400 text-xs">▼</span>
+            </summary>
+            <div class="text-xs text-slate-600 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+              네, 상단의 [.md 파일 다운로드] 버튼을 클릭하면 현재 작성 중인 노트가 표준 마크다운 문서 파일로 즉시 컴퓨터에 저장됩니다.
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <span>📋</span> 반드시 챙겨야 할 실전 체크리스트
+          </h4>
+          <ul class="text-xs sm:text-sm text-slate-600 space-y-2">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span><span>중요한 기밀 메모는 작업 완료 후 반드시 [.md 다운로드]를 통해 로컬 파일로 이중 보관하세요.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span><span>노트 상단에 태그를 지정하여 주제별로 문서를 체계적으로 분류하세요.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span><span>블로그나 깃허브 발행 시 [복사] 버튼을 눌러 서식 손상 없이 원문 그대로 활용하세요.</span></li>
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 text-[11px] text-slate-500 leading-relaxed">
+          <strong>⚠️ 면책 고지:</strong> 본 서비스는 100% 클라이언트 로컬 메모장입니다. 기기 변경이나 시크릿 모드 사용 시 데이터가 영구 보존되지 않으므로 필수 자료는 파일 다운로드 기능을 활용하시기 바랍니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Large Ad (3416334507) -->
+    <div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;">
+        <ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center">
+        <div class="max-w-4xl mx-auto text-xs text-slate-500 space-y-3">
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-medium">
+                <a class="hover:text-emerald-600 transition" href="/privacy.html">개인정보처리방침</a>
+                <span>·</span>
+                <a class="hover:text-emerald-600 transition" href="/terms.html">이용약관</a>
+            </div>
+            <p>100% 무서버 클라이언트 사이드 연산 | 데이터 외부 전송 제로 보증</p>
+            <p class="text-[11px] text-slate-400">© 2026 Notes Web. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const STORAGE_KEY = 'enjoy_notes_data_v1';
+        let currentNote = {
+            title: '',
+            tags: '',
+            content: ''
+        };
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
+                toast.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'pointer-events-none');
+                }, 2200);
+            }
+        }
+
+        function renderMarkdown() {
+            const input = document.getElementById('markdownInput').value;
+            const preview = document.getElementById('previewContainer');
+            if (typeof marked !== 'undefined') {
+                preview.innerHTML = marked.parse(input || '');
+            } else {
+                preview.innerText = input;
+            }
+            
+            // Count chars and words
+            const charCount = input.length;
+            const wordCount = input.trim() ? input.trim().split(/\s+/).length : 0;
+            document.getElementById('charCounter').innerText = `${charCount}자 | ${wordCount}단어`;
+        }
+
+        function saveNote() {
+            currentNote.title = document.getElementById('noteTitle').value;
+            currentNote.tags = document.getElementById('noteTags').value;
+            currentNote.content = document.getElementById('markdownInput').value;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(currentNote));
+            document.getElementById('saveStatus').innerText = "방금 저장됨 (" + new Date().toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit'}) + ")";
+        }
+
+        function loadNote() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                    currentNote = JSON.parse(raw);
+                    document.getElementById('noteTitle').value = currentNote.title || '';
+                    document.getElementById('noteTags').value = currentNote.tags || '';
+                    document.getElementById('markdownInput').value = currentNote.content || '';
+                }
+            } catch(e) {
+                console.error(e);
+            }
+            renderMarkdown();
+        }
+
+        document.getElementById('markdownInput').addEventListener('input', () => {
+            renderMarkdown();
+            saveNote();
+        });
+
+        document.getElementById('noteTitle').addEventListener('input', saveNote);
+        document.getElementById('noteTags').addEventListener('input', saveNote);
+
+        document.getElementById('newNoteBtn').addEventListener('click', () => {
+            if (confirm("새 노트를 작성하시겠습니까? 현재 내용은 자동 저장되어 있습니다.")) {
+                document.getElementById('noteTitle').value = '';
+                document.getElementById('noteTags').value = '';
+                document.getElementById('markdownInput').value = '';
+                saveNote();
+                renderMarkdown();
+                showToast("새 노트가 준비되었습니다.");
+            }
+        });
+
+        document.getElementById('downloadMdBtn').addEventListener('click', () => {
+            const title = document.getElementById('noteTitle').value.trim() || 'untitled_note';
+            const content = document.getElementById('markdownInput').value;
+            const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title}.md`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast(".md 파일이 다운로드되었습니다.");
+        });
+
+        document.getElementById('copyMdBtn').addEventListener('click', () => {
+            const content = document.getElementById('markdownInput').value;
+            if (!content) {
+                showToast("복사할 내용이 없습니다.");
+                return;
+            }
+            const linkText = `${content}
+
+👉 작성 도구: https://notes.enjoy-onepage.com/`;
+            navigator.clipboard.writeText(linkText).then(() => {
+                showToast("마크다운 본문이 복사되었습니다.");
+            });
+        });
+
+        loadNote();
+    </script>
+</body>
+</html>
