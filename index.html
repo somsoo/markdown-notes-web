@@ -92,6 +92,16 @@
       .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 0.75rem; color: #64748b; margin-bottom: 0.75rem; }
       .prose code { background: #f1f5f9; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.85em; }
     </style>
+<style id="mobile-hardening-shield">
+  @media (max-width: 640px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    button, [role="button"], a.btn {
+      min-height: 42px;
+    }
+  }
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen flex flex-col justify-between">
     <!-- Top Slim Ad (3824727725, 60px) -->
