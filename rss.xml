@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>100% 로컬 마크다운 노트 &amp; 메모장</title>
+  <link>https://notes.enjoy-onepage.com/</link>
+  <description>브라우저 로컬에서 안전하게 실시간 미리보기와 자동 저장을 지원하는 무서버 마크다운 메모장입니다.</description>
+  <language>ko-kr</language>
+  <atom:link href="https://notes.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Mon, 19 Oct 2026 09:45:00 +0900</lastBuildDate>
+  <item>
+    <title>마크다운 노트 작성 및 생산성 활용 가이드 | Notes Web</title>
+    <link>https://notes.enjoy-onepage.com/guides/guide.html</link>
+    <guid isPermaLink="true">https://notes.enjoy-onepage.com/guides/guide.html</guid>
+    <description>현대 지식 노동자를 위한 마크다운 실무 활용 가이드.</description>
+    <pubDate>Mon, 19 Oct 2026 09:45:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>개인정보처리방침 | Notes Web</title>
+    <link>https://notes.enjoy-onepage.com/privacy.html</link>
+    <guid isPermaLink="true">https://notes.enjoy-onepage.com/privacy.html</guid>
+    <description>Notes Web의 개인정보처리방침입니다.</description>
+    <pubDate>Mon, 19 Oct 2026 09:45:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>이용약관 | Notes Web</title>
+    <link>https://notes.enjoy-onepage.com/terms.html</link>
+    <guid isPermaLink="true">https://notes.enjoy-onepage.com/terms.html</guid>
+    <description>Notes Web의 서비스 이용약관입니다.</description>
+    <pubDate>Mon, 19 Oct 2026 09:45:00 +0900</pubDate>
+  </item>
+</channel>
+</rss>

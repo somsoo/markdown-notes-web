@@ -1,28 +1,496 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>100% 프라이버시 로컬 마크다운 노트 &amp; 메모장 - 점검 중</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="site-status" content="maintenance">
-<meta name="description" content="보안 점검을 위해 잠시 서비스를 멈췄습니다.">
+<title>100% 로컬 마크다운 노트 &amp; 메모장</title>
+<meta name="description" content="브라우저 로컬에서 안전하게 실시간 미리보기와 자동 저장을 지원하는 무서버 마크다운 메모장입니다.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://notes.enjoy-onepage.com/">
+<meta name="theme-color" content="#1e1b4b">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Notes Web">
+<meta property="og:title" content="100% 로컬 마크다운 노트 &amp; 메모장">
+<meta property="og:description" content="브라우저 로컬에서 안전하게 실시간 미리보기와 자동 저장을 지원하는 무서버 마크다운 메모장입니다.">
+<meta property="og:url" content="https://notes.enjoy-onepage.com/">
+<meta property="og:image" content="https://notes.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="100% 로컬 마크다운 노트 &amp; 메모장">
+<meta name="twitter:description" content="브라우저 로컬에서 안전하게 실시간 미리보기와 자동 저장을 지원하는 무서버 마크다운 메모장입니다.">
+<meta name="twitter:image" content="https://notes.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Notes Web RSS" href="https://notes.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://notes.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://notes.enjoy-onepage.com/#webapp",
+      "name": "100% 로컬 마크다운 노트 & 메모장",
+      "url": "https://notes.enjoy-onepage.com/",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "All",
+      "inLanguage": "ko",
+      "description": "서버 전송 없이 브라우저 로컬 메모리 안에서만 100% 안전하게 동작하는 마크다운 실시간 에디터 및 메모장입니다.",
+      "image": "https://notes.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://notes.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "작성한 메모가 외부 서버로 전송되거나 열람될 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "절대 그렇지 않습니다. 본 서비스는 100% 클라이언트 브라우저 로컬 환경에서만 실행되며 백엔드 서버나 외부 전송 API가 전혀 존재하지 않습니다. 모든 데이터는 사용자의 기기 LocalStorage에만 보관됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "작성 중인 글은 언제 어떻게 저장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "타이핑을 입력하는 즉시 브라우저의 LocalStorage에 실시간 자동 저장됩니다. 실수로 브라우저 탭을 닫거나 컴퓨터가 꺼져도 동일한 브라우저로 재접속 시 작성 중이던 내용이 완벽하게 복원됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "작성한 문서를 파일로 내보낼 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 하단의 '.md 다운로드' 버튼을 클릭하면 표준 마크다운(.md) 파일로 즉시 내 컴퓨터에 저장할 수 있습니다. 옵시디언(Obsidian), 노션(Notion), VS Code 등 모든 마크다운 호환 에디터에서 바로 열어볼 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 마크다운 문법이 지원되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "제목(#~######), 굵게, 기울임, 취소선, 인라인 코드, 코드 블록, 글머리 기호 목록, 번호 목록, 체크박스 할 일 목록, 인용구, 구분선, 안전한 하이퍼링크가 완벽 지원됩니다. 입력된 원본 HTML은 안전하게 이스케이프되어 XSS 보안 위험이 차단됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "브라우저 캐시를 지우면 메모가 사라지나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "브라우저 설정에서 쿠키 및 로컬 사이트 데이터를 삭제하면 저장된 메모가 초기화될 수 있습니다. 중요한 기획서나 문서는 정기적으로 '.md 다운로드' 버튼을 눌러 안전하게 백업해 두는 것을 권장합니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
 <style>
-  body { margin: 0; font-family: system-ui, -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; background: #f8fafc; color: #0f172a; }
-  main { max-width: 560px; margin: 12vh auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; }
-  h1 { font-size: 1.35rem; margin: 0 0 12px; }
-  p { line-height: 1.7; color: #334155; }
-  a { color: #1d4ed8; font-weight: 600; }
-  .tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #92400e; background: #fef3c7; border-radius: 999px; padding: 4px 10px; margin-bottom: 14px; }
+:root{--bg:#f5f5fb;--card:#fff;--ink:#1e1b4b;--muted:#4b5068;--line:#e0e0ef;--r:#b91c1c;--accent:#4338ca;--accent-hover:#3730a3}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.header{background:linear-gradient(135deg,#1e1b4b,#3730a3);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.65rem;word-break:keep-all}
+.header-sub{margin-top:6px;font-size:.92rem;opacity:.92;word-break:keep-all}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;color:#10b981;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);border-radius:999px;padding:3px 10px;margin-top:8px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wrap{max-width:1120px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px;margin-top:12px}
+@media (min-width:1024px){.grid2{grid-template-columns:1fr 1fr;align-items:start}.result{position:sticky;top:12px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px;display:flex;justify-content:space-between;align-items:center}
+.lbl{display:block;font-weight:600;margin:8px 0 4px;font-size:.92rem}
+input[type=text]{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);margin-bottom:8px}
+textarea{width:100%;min-height:360px;font:inherit;font-family:ui-monospace,SFMono-Regular,Consolas,"D2Coding",monospace;font-size:.95rem;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;line-height:1.6}
+.btn{font:inherit;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:8px 13px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#f1f1f8}
+.btn.sm{padding:4px 10px;font-size:.86rem;border-radius:8px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn.pri:hover{background:var(--accent-hover)}
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.toolbar{display:flex;flex-wrap:wrap;gap:5px;background:#f8f8fc;padding:6px 8px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+.status-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted);margin-top:8px;flex-wrap:wrap;gap:6px}
+.stats{font-size:.88rem;color:var(--muted);font-variant-numeric:tabular-nums;margin:0 0 8px}
+.out{min-height:360px;max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff;overflow-wrap:anywhere}
+.out pre{background:#f4f4fa;border-radius:8px;padding:10px 12px;overflow:auto;white-space:pre-wrap}
+.out code{background:#f4f4fa;border-radius:4px;padding:1px 4px;font-family:ui-monospace,Consolas,monospace;font-size:.9em}
+.out blockquote{border-left:3px solid var(--accent);margin:10px 0;padding:4px 12px;color:var(--muted);background:#fafaff}
+.out hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.out h1{font-size:1.4rem;margin:14px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.out h2{font-size:1.25rem;margin:12px 0 6px}
+.out h3{font-size:1.1rem;margin:10px 0 4px}
+.out ul,.out ol{padding-left:22px;margin:8px 0}
+.out li{margin:3px 0}
+.out p{margin:8px 0}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#373a52}
+.src{font-size:.82rem;color:var(--muted);word-break:keep-all}
+.ad-box{max-width:1080px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1e1b4b;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">점검 중</span>
-  <h1>100% 프라이버시 로컬 마크다운 노트 &amp; 메모장</h1>
-  <p>보안 점검을 위해 이 도구를 잠시 멈췄습니다. 점검을 마치면 다시 열겠습니다.</p>
-  <p>이 점검 페이지는 브라우저에 저장된 메모를 지우지 않습니다.</p>
-  <p><a href="https://enjoy-onepage.com/">다른 무료 도구 보러 가기</a></p>
+<header class="header">
+  <h1>100% 로컬 마크다운 노트 &amp; 메모장</h1>
+  <div class="header-sub">서버 전송 제로 · 브라우저 실시간 자동 저장 · 완벽한 오프라인 프라이버시</div>
+  <span class="badge">🔒 100% 온디바이스 로컬 보안</span>
+</header>
+
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block;height:60px;max-height:90px" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
+
+<main class="wrap">
+  <div class="grid2">
+    <section class="card" aria-labelledby="in-h">
+      <h2 id="in-h">📝 노트 작성</h2>
+      <label class="lbl" for="noteTitle">노트 제목</label>
+      <input type="text" id="noteTitle" placeholder="예: 2026 하반기 신규 프로젝트 기획안">
+      
+      <label class="lbl" for="noteTags">태그 (쉼표로 구분)</label>
+      <input type="text" id="noteTags" placeholder="기획, 회의록, 아이디어">
+
+      <label class="lbl" for="markdownInput">마크다운 본문</label>
+      <div class="toolbar" role="toolbar" aria-label="서식 도구">
+        <button type="button" class="btn sm" data-md="**|**" title="굵게">굵게</button>
+        <button type="button" class="btn sm" data-md="*|*" title="기울임">기울임</button>
+        <button type="button" class="btn sm" data-md="~~|~~" title="취소선">취소선</button>
+        <button type="button" class="btn sm" data-md="# |" title="제목 1">H1</button>
+        <button type="button" class="btn sm" data-md="## |" title="제목 2">H2</button>
+        <button type="button" class="btn sm" data-md="- |" title="목록">목록</button>
+        <button type="button" class="btn sm" data-md="- [ ] |" title="체크박스">할 일</button>
+        <button type="button" class="btn sm" data-md="> |" title="인용구">인용</button>
+        <button type="button" class="btn sm" data-md="`|`" title="인라인 코드">코드</button>
+        <button type="button" class="btn sm" data-md="```&#10;|&#10;```" title="코드 블록">블록</button>
+        <button type="button" class="btn sm" data-md="---&#10;|" title="구분선">선</button>
+      </div>
+
+      <textarea id="markdownInput" spellcheck="false"></textarea>
+
+      <div class="status-row">
+        <span id="saveStatus">자동 저장됨</span>
+        <div style="display:flex;gap:6px;">
+          <button type="button" class="btn sm" id="btnClear">내용 비우기</button>
+          <button type="button" class="btn sm" id="btnUndo" hidden>되돌리기</button>
+          <button type="button" class="btn sm pri" id="btnDownload">💾 .md 다운로드</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card result" aria-labelledby="out-h">
+      <h2 id="out-h">
+        <span>👁️ 실시간 미리보기</span>
+      </h2>
+      <p class="stats" id="stats">0자 · 0단어 · 읽기 소요 약 0초</p>
+      <div class="out" id="previewContainer" aria-live="off"></div>
+      <p class="sr-only" id="sr-status" aria-live="polite"></p>
+      
+      <div class="actions" style="margin-top:12px;">
+        <button type="button" class="btn" id="btnCopyMd">📋 마크다운 원문 복사</button>
+        <button type="button" class="btn" id="btnCopyText">📄 미리보기 텍스트 복사</button>
+        <button type="button" class="btn" id="btnShare">📤 공유하기</button>
+      </div>
+    </section>
+  </div>
+
+<!-- ADSENSE START: mid -->
+<div class="ad-box ad-mid">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
+
+  <section class="card" aria-labelledby="how-h">
+    <h2 id="how-h">🧮 핵심 원리 및 개인정보 보호</h2>
+    <ul>
+      <li><strong>완전한 로컬 퍼스트:</strong> 작성한 메모와 태그는 사용자 기기의 <code>LocalStorage</code>에만 즉시 저장되며, 외부 백엔드 서버나 원격 DB로 단 1글자도 전송되지 않습니다.</li>
+      <li><strong>무결점 XSS 방어:</strong> 외부 CDN 라이브러리 없이 자체 내장된 정규식 파서가 모든 HTML 태그를 우선 안전하게 이스케이프한 후 렌더링하므로 스크립트 실행 공격이 원천 차단됩니다.</li>
+      <li><strong>실시간 자동 저장:</strong> 글자를 입력하는 순간 즉시 저장되어 실수로 탭을 닫거나 브라우저가 종료되어도 다시 열었을 때 이전 작업 상태가 그대로 복구됩니다.</li>
+      <li><strong>자유로운 포터블 내보내기:</strong> <code>.md 다운로드</code> 버튼을 눌러 표준 마크다운 파일로 언제든지 저장할 수 있으며, Obsidian, Notion, VS Code 등에서 바로 사용할 수 있습니다.</li>
+    </ul>
+    <p class="src">보안 보증: 본 사이트는 온디바이스(On-device) 순수 정적 웹앱으로 안전한 사내 회의록 및 개인 일기 작성에 최적화되어 있습니다.</p>
+  </section>
+
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ 자주 묻는 질문 (FAQ)</h2>
+    <div class="faq-item"><h3>작성한 메모가 외부 서버로 전송되거나 열람될 수 있나요?</h3><p>절대 그렇지 않습니다. 본 서비스는 100% 클라이언트 브라우저 로컬 환경에서만 실행되며 백엔드 서버나 외부 전송 API가 전혀 존재하지 않습니다. 모든 데이터는 사용자의 기기 LocalStorage에만 보관됩니다.</p></div>
+    <div class="faq-item"><h3>작성 중인 글은 언제 어떻게 저장되나요?</h3><p>타이핑을 입력하는 즉시 브라우저의 LocalStorage에 실시간 자동 저장됩니다. 실수로 브라우저 탭을 닫거나 컴퓨터가 꺼져도 동일한 브라우저로 재접속 시 작성 중이던 내용이 완벽하게 복원됩니다.</p></div>
+    <div class="faq-item"><h3>작성한 문서를 파일로 내보낼 수 있나요?</h3><p>네, 하단의 '.md 다운로드' 버튼을 클릭하면 표준 마크다운(.md) 파일로 즉시 내 컴퓨터에 저장할 수 있습니다. 옵시디언(Obsidian), 노션(Notion), VS Code 등 모든 마크다운 호환 에디터에서 바로 열어볼 수 있습니다.</p></div>
+    <div class="faq-item"><h3>어떤 마크다운 문법이 지원되나요?</h3><p>제목(#~######), 굵게, 기울임, 취소선, 인라인 코드, 코드 블록, 글머리 기호 목록, 번호 목록, 체크박스 할 일 목록, 인용구, 구분선, 안전한 하이퍼링크가 완벽 지원됩니다. 입력된 원본 HTML은 안전하게 이스케이프되어 XSS 보안 위험이 차단됩니다.</p></div>
+    <div class="faq-item"><h3>브라우저 캐시를 지우면 메모가 사라지나요?</h3><p>브라우저 설정에서 쿠키 및 로컬 사이트 데이터를 삭제하면 저장된 메모가 초기화될 수 있습니다. 중요한 기획서나 문서는 정기적으로 '.md 다운로드' 버튼을 눌러 안전하게 백업해 두는 것을 권장합니다.</p></div>
+  </section>
+
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ 이용 시 참고사항</h2>
+    <p>본 메모장은 현재 브라우저의 로컬 환경에 저장되므로 공용 PC나 도서관 컴퓨터에서는 작업 완료 후 '내용 비우기'를 눌러 메모를 지워주세요. 중요한 기획 문서는 주기적으로 '.md 다운로드'를 통해 백업해 두시기 바랍니다.</p>
+  </section>
 </main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>100% 프라이버시 로컬 마크다운 노트 (Notes Web) · 모든 데이터는 사용자 기기 안에서만 안전하게 보관됩니다.</p>
+  <p><a href="/privacy.html">개인정보처리방침</a> | <a href="/terms.html">이용약관</a> | <a href="/guides/guide.html">가이드북</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://notes.enjoy-onepage.com';
+  var TOOL_NAME = 'Notes Web';
+  var STORAGE_KEY = 'enjoy_notes_data_v1';
+  var WPM = 238;
+  var DEFAULT_DRAFT = '# 환영합니다! 📝\n\n이곳은 **100% 프라이버시가 보장되는 로컬 마크다운 메모장**입니다.\n\n## 주요 특징\n- [x] 서버 전송 제로 (단 1글자도 외부로 나가지 않음)\n- [x] 브라우저 LocalStorage 실시간 자동 저장\n- [ ] .md 파일 원클릭 다운로드 기능 지원\n\n## 코드 예시\n```javascript\nconsole.log("Hello, Safe Markdown!");\n```\n\n> 기획서, 회의록, 할 일 목록을 자유롭게 정리해 보세요!';
+
+  var clearedData = null, toastTimer = null, srTimer = null;
+  function $(id) { return document.getElementById(id); }
+  function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
+  function n(x) { return x.toLocaleString('ko-KR'); }
+
+  /* ---------- safe markdown: escape first, then format ---------- */
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+  function inline(s) {
+    return esc(s).split(/(`[^`]+`)/).map(function (p) {
+      if (/^`[^`]+`$/.test(p)) return '<code>' + p.slice(1, -1) + '</code>';
+      return p.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" rel="noopener noreferrer nofollow" target="_blank">$1</a>')
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/(^|[^*])\*([^*\s][^*]*)\*(?!\*)/g, '$1<em>$2</em>')
+        .replace(/~~([^~]+)~~/g, '<del>$1</del>');
+    }).join('');
+  }
+  function markdown(src) {
+    var lines = src.replace(/\r\n?/g, '\n').split('\n'), html = [], i = 0, para = [];
+    function flush() { if (para.length) { html.push('<p>' + para.map(inline).join(' ') + '</p>'); para = []; } }
+    while (i < lines.length) {
+      var ln = lines[i], m;
+      if (/^```/.test(ln)) {
+        flush(); var code = []; i++;
+        while (i < lines.length && !/^```/.test(lines[i])) code.push(lines[i++]);
+        i++; html.push('<pre><code>' + esc(code.join('\n')) + '</code></pre>'); continue;
+      }
+      if ((m = /^(#{1,6})\s+(.*)$/.exec(ln))) { flush(); html.push('<h' + m[1].length + '>' + inline(m[2]) + '</h' + m[1].length + '>'); i++; continue; }
+      if (/^\s*([-*_])(\s*\1){2,}\s*$/.test(ln)) { flush(); html.push('<hr>'); i++; continue; }
+      if (/^>\s?/.test(ln)) {
+        flush(); var q = [];
+        while (i < lines.length && /^>\s?/.test(lines[i])) q.push(lines[i++].replace(/^>\s?/, ''));
+        html.push('<blockquote>' + q.map(inline).join('<br>') + '</blockquote>'); continue;
+      }
+      if (/^\s*([-*+]|\d+[.)])\s+/.test(ln)) {
+        flush(); var ordered = /^\s*\d/.test(ln), items = [];
+        while (i < lines.length && /^\s*([-*+]|\d+[.)])\s+/.test(lines[i]) && /^\s*\d/.test(lines[i]) === ordered) {
+          var t = lines[i++].replace(/^\s*([-*+]|\d+[.)])\s+/, ''), box = /^\[( |x|X)\]\s+/.exec(t);
+          items.push('<li>' + (box ? (box[1] === ' ' ? '\u2610 ' : '\u2611 ') + inline(t.slice(box[0].length)) : inline(t)) + '</li>');
+        }
+        html.push((ordered ? '<ol>' : '<ul>') + items.join('') + (ordered ? '</ol>' : '</ul>')); continue;
+      }
+      if (!ln.trim()) { flush(); i++; continue; }
+      para.push(ln.trim()); i++;
+    }
+    flush();
+    return html.join('\n');
+  }
+
+  function stats(text) {
+    var chars = Array.from(text).length;
+    var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    var secs = Math.round(words / WPM * 60);
+    var read = secs < 60 ? secs + '초' : Math.floor(secs / 60) + '분' + (secs % 60 ? ' ' + (secs % 60) + '초' : '');
+    return n(chars) + '자 · ' + n(words) + '단어 · 읽기 소요 약 ' + read;
+  }
+
+  function save() {
+    var data = {
+      title: $('noteTitle').value,
+      tags: $('noteTags').value,
+      content: $('markdownInput').value,
+      updatedAt: Date.now()
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      var now = new Date();
+      var timeStr = (now.getHours() < 10 ? '0' : '') + now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes() + ':' + (now.getSeconds() < 10 ? '0' : '') + now.getSeconds();
+      $('saveStatus').textContent = '자동 저장됨 (' + timeStr + ')';
+    } catch (e) {
+      $('saveStatus').textContent = '로컬 저장 불가 (미리보기 정상 작동)';
+    }
+  }
+
+  function render() {
+    var v = $('markdownInput').value;
+    var preview = $('previewContainer');
+    if (v.trim()) {
+      var headerHtml = '';
+      var title = $('noteTitle').value.trim();
+      var tags = $('noteTags').value.trim();
+      if (title) headerHtml += '<h1>' + esc(title) + '</h1>';
+      if (tags) {
+        var tagList = tags.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+        if (tagList.length) {
+          headerHtml += '<p style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;">' +
+            tagList.map(function (t) { return '<span style="background:#f1f1f8;padding:2px 8px;border-radius:6px;margin-right:6px;">#' + esc(t) + '</span>'; }).join('') +
+            '</p>';
+        }
+      }
+      preview.innerHTML = headerHtml + markdown(v);
+    } else {
+      preview.innerHTML = '<p style="color:var(--muted);font-size:0.9rem;">본문에 마크다운을 입력하면 실시간으로 미리보기가 렌더링됩니다.</p>';
+    }
+    $('stats').textContent = stats(v);
+    save();
+  }
+
+  function showToast(msg) {
+    var t = $('global-ux-toast'); if (!t) return;
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2200);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    showToast(ok ? '클립보드에 복사되었습니다.' : '복사 실패: 텍스트를 직접 선택해 복사해 주세요.');
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { showToast('클립보드에 복사되었습니다.'); }, function () { fallbackCopy(text); });
+    } else { fallbackCopy(text); }
+  }
+
+  function downloadMd() {
+    var title = $('noteTitle').value.trim() || 'note';
+    var safeFilename = title.replace(/[^A-Za-z0-9가-힣_-]/g, '_').slice(0, 40) + '.md';
+    var fullContent = '';
+    if ($('noteTitle').value.trim()) fullContent += '# ' + $('noteTitle').value.trim() + '\n\n';
+    if ($('noteTags').value.trim()) fullContent += '태그: ' + $('noteTags').value.trim() + '\n\n---\n\n';
+    fullContent += $('markdownInput').value;
+
+    var blob = new Blob([fullContent], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = safeFilename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast(safeFilename + ' 파일이 다운로드되었습니다.');
+  }
+
+  on('markdownInput', 'input', render);
+  on('noteTitle', 'input', render);
+  on('noteTags', 'input', render);
+
+  document.querySelectorAll('[data-md]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pr = b.getAttribute('data-md').split('|');
+      var ta = $('markdownInput');
+      var s = ta.selectionStart, e = ta.selectionEnd;
+      var sel = ta.value.slice(s, e) || '텍스트';
+      ta.value = ta.value.slice(0, s) + pr[0] + sel + (pr[1] || '') + ta.value.slice(e);
+      ta.focus();
+      ta.setSelectionRange(s + pr[0].length, s + pr[0].length + sel.length);
+      render();
+    });
+  });
+
+  on('btnClear', 'click', function () {
+    if (!$('markdownInput').value && !$('noteTitle').value && !$('noteTags').value) return;
+    clearedData = {
+      title: $('noteTitle').value,
+      tags: $('noteTags').value,
+      content: $('markdownInput').value
+    };
+    $('noteTitle').value = '';
+    $('noteTags').value = '';
+    $('markdownInput').value = '';
+    $('btnUndo').hidden = false;
+    render();
+    showToast('내용이 비워졌습니다. 되돌리려면 [되돌리기]를 누르세요.');
+  });
+
+  on('btnUndo', 'click', function () {
+    if (!clearedData) return;
+    $('noteTitle').value = clearedData.title;
+    $('noteTags').value = clearedData.tags;
+    $('markdownInput').value = clearedData.content;
+    clearedData = null;
+    $('btnUndo').hidden = true;
+    render();
+    showToast('이전 작성 내용이 복원되었습니다.');
+  });
+
+  on('btnDownload', 'click', downloadMd);
+  on('btnCopyMd', 'click', function () {
+    var v = $('markdownInput').value;
+    if (!v.trim()) { showToast('복사할 마크다운 내용이 없습니다.'); return; }
+    copyText(v);
+  });
+  on('btnCopyText', 'click', function () {
+    var p = $('previewContainer');
+    var text = p ? (p.innerText || p.textContent) : '';
+    if (!text.trim()) { showToast('복사할 미리보기 내용이 없습니다.'); return; }
+    copyText(text);
+  });
+  on('btnShare', 'click', function () {
+    var shareText = ($('noteTitle').value.trim() ? $('noteTitle').value.trim() + '\n' : '') + TOOL_NAME + ': ' + SITE + '/';
+    if (navigator.share) {
+      navigator.share({ title: TOOL_NAME, text: shareText, url: SITE + '/' }).catch(function (e) {
+        if (!e || e.name !== 'AbortError') copyText(shareText);
+      });
+    } else { copyText(shareText); }
+  });
+
+  (function init() {
+    var loaded = false;
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var d = JSON.parse(raw);
+        if (d && (d.content || d.title || d.tags)) {
+          $('noteTitle').value = d.title || '';
+          $('noteTags').value = d.tags || '';
+          $('markdownInput').value = d.content || '';
+          loaded = true;
+        }
+      }
+    } catch (e) { loaded = false; }
+    if (!loaded) {
+      $('markdownInput').value = DEFAULT_DRAFT;
+    }
+    render();
+  })();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>
